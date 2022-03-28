@@ -5,6 +5,11 @@
   /* font-family: "Saira Condensed", sans-serif; */
   margin: auto;
 }
+:root {
+  --bg-color: black;
+  --typewriterSpeed: 6s;
+  --typewriterCharacters: 30;
+}
 body {
   display: flex;
   width: 150vh;
@@ -347,4 +352,58 @@ h3 {
 p {
   font-size: medium;
   font-weight: bold;
+}
+.banner {
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+  text-align: left;
+  padding: 2px;
+  margin: auto;
+  height: 20px;
+  width: 260px;
+}
+
+.author {
+  position: relative;
+  margin: auto;
+  color: white;
+  text-align: left;
+  font-family: "Courier New", Courier, monospace;
+}
+.author::before,
+.author::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.author::before {
+  background: var(--bg-color);
+  animation: typewriter var(--typewriterSpeed)
+    steps(var(--typewriterCharacters)) 1s forwards;
+}
+.author::after {
+  width: 0.125em;
+  background: white;
+  animation: typewriter var(--typewriterSpeed)
+      steps(var(--typewriterCharacters)) 1s forwards,
+    blink 750ms steps(var(--typewriterCharacters)) infinite;
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+@keyframes blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
 }
